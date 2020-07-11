@@ -23,9 +23,20 @@
                     <th width="18%">名称</th>
                     <th width="18%">描述</th>
                     <th width="5%">价格</th>
-                    <th width="10%">生产商</th>
+                    <th width="10%">生产商</th >
                     <th width="9%">操作</th>
                 </tr>
+                <c:forEach items="${ list }" var="carGoods">
+                    <tr>
+                        <td>${ carGoods.name }</td>
+                        <td>${ carGoods.description }</td>
+                        <td>${ carGoods.price }</td>
+                        <td>${ carGoods.produce }</td>
+                        <td>
+                            <a href="${ pageContext.request.contextPath }/cargoods/addToCart?id=${ carGoods.id }">点击购买</a>
+                        </td>
+                    </tr>
+                </c:forEach>
 
             </table>
         </div>
