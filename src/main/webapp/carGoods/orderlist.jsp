@@ -26,7 +26,8 @@
                         <td>${CarOrders.price}</td>
                         <td>
                             <a href="#"  onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/queryordersdetails?id=${CarOrders.id}'">订单详情</a>
-                            <a href="#"  onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/teardowndetails?orderId=${CarOrders.id}'">拆单</a>
+                            <a href="${pageContext.request.contextPath}/cargoods/teardowndetails?orderId=${CarOrders.id}">拆单</a>
+<%--                            <a href="#"  onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/teardowndetails?orderId=${CarOrders.id}'">拆单</a>--%>
                         </td>
                     </tr>
                 </c:forEach>

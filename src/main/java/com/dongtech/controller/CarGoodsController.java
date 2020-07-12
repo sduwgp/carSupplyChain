@@ -214,9 +214,9 @@ public class CarGoodsController {
      * @throws UnsupportedEncodingException
      */
     @RequestMapping("teardowndetails")
-    public ModelAndView teardowndetails(HttpServletRequest request, HttpServletResponse response, Integer id)
+    public ModelAndView teardowndetails(HttpServletRequest request, HttpServletResponse response, @RequestParam("orderId") String id)
             throws UnsupportedEncodingException {
-        List<CarOrderDetails> carOrderDetails = carVGoodsService.queryOrdersDetails(id);
+        List<CarOrderDetails> carOrderDetails = carVGoodsService.queryOrdersDetails(Integer.valueOf(id));
 
         carOrderDetails.forEach(carOrderDetail -> {
             TearDownDetails tearDownDetails = carVGoodsService.queryOrdersTearDownDetails(carOrderDetail);
@@ -262,9 +262,9 @@ public class CarGoodsController {
      * @throws UnsupportedEncodingException
      */
     @RequestMapping("deleteCarGoodsById")
-    public ModelAndView deleteCarGoodsById(Integer id, HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView deleteCarGoodsById(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        deleteCartInCookie(id, request, response);
+        deleteCartInCookie(Integer.valueOf(id), request, response);
         List<Cart> cartInCookie = getCartInCookie(response, request);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("list", cartInCookie);
@@ -382,6 +382,7 @@ public class CarGoodsController {
         }
     }
 
+
     /**
      * 获取名为"cart"的cookie
      *
@@ -391,12 +392,15 @@ public class CarGoodsController {
     public Cookie getCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         Cookie cart_cookie = null;
-        for (Cookie cookie : cookies) {
-            //获取购物车cookie
-            if ("cart".equals(cookie.getName())) {
-                cart_cookie = cookie;
+        if(cookies!= null){
+            for (Cookie cookie : cookies) {
+                //获取购物车cookie
+                if ("cart".equals(cookie.getName())) {
+                    cart_cookie = cookie;
+                }
             }
         }
+
         return cart_cookie;
     }
 
@@ -410,7 +414,7 @@ public class CarGoodsController {
         StringBuffer buffer_2st = new StringBuffer();
         for (Cart item : cartVos) {
             buffer_2st.append(item.getId() + "=" + item.getType() + "=" + item.getName() + "="
-                    + item.getPrice() + "=" + item.getDescription() + "=" + item.getNum() + "==");
+                    + item.getPrice() + "=" + item.getDescription() + "=" + item.getNum() + "=" + item.getProduce() + "==");
         }
         return buffer_2st.toString().substring(0, buffer_2st.toString().length() - 2);
     }

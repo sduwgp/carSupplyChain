@@ -37,7 +37,8 @@
                         <td>${ cart.description }</td>
                         <td>${ cart.num }</td>
                         <td>
-                            <a href="#"  onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/deleteGoodsById?id=${Cart.id}'" id="">删除</a>
+                            <a href="${ pageContext.request.contextPath }/cargoods/deleteCarGoodsById?id=${ cart.id }">删除</a>
+<%--                            <a href="#"  onclick="javascrtpt:window.location.href='${pageContext.request.contextPath}/cargoods/deleteGoodsById?id=${cart.id}'" id="">删除</a>--%>
                         </td>
                     </tr>
                 </c:forEach>
