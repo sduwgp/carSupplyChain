@@ -33,7 +33,7 @@
                         <td>${ carGoods.price }</td>
                         <td>${ carGoods.produce }</td>
                         <td>
-                            <a href="${ pageContext.request.contextPath }/cargoods/addToCart?id=${ carGoods.id }">点击购买</a>
+                            <a href="${ pageContext.request.contextPath }/cargoods/addGoodsToCart?id=${ carGoods.id }">添加至购物车</a>
                         </td>
                     </tr>
                 </c:forEach>

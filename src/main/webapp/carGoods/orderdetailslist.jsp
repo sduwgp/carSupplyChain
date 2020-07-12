@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/list.css">
-    <title>维护图书</title>
+    <title>订单明细</title>
 </head>
 <body>
 <div class="w">
@@ -20,7 +20,14 @@
                     <th width="5%">生产地</th>
                     <th width="5%">价格</th>
                 </tr>
-
+                <c:forEach items="${list}" var="CarOrderDetails">
+                    <tr>
+                        <td>${CarOrderDetails.goodsname}</td>
+                        <td>${CarOrderDetails.num}</td>
+                        <td>${CarOrderDetails.produce}</td>
+                        <td>${CarOrderDetails.price}</td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </div>

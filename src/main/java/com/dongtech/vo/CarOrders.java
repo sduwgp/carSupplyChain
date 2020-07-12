@@ -14,6 +14,11 @@ public class CarOrders {
 
     private BigDecimal price;
 
+    public CarOrders(String number, BigDecimal price) {
+        this.number = number;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
